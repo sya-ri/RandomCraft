@@ -5,6 +5,7 @@ import com.github.syari.spigot.api.event.Events
 import com.github.syari.spigot.api.item.customModelData
 import com.github.syari.spigot.api.item.itemStack
 import org.bukkit.Material
+import org.bukkit.event.inventory.ClickType
 import org.bukkit.event.inventory.CraftItemEvent
 import org.bukkit.event.inventory.PrepareItemCraftEvent
 import org.bukkit.inventory.ItemStack
@@ -25,8 +26,12 @@ object EventListener : EventRegister {
                     it.currentItem = randomItem
                 }
             } else {
-                val cursor = it.cursor
-                if (cursor == null || cursor.type == Material.AIR) {
+                val item = if (it.click == ClickType.NUMBER_KEY) {
+                    it.whoClicked.inventory.getItem(it.hotbarButton)
+                } else {
+                    it.cursor
+                }
+                if (item == null || item.type == Material.AIR) {
                     it.inventory.result = randomItem
                 }
             }
