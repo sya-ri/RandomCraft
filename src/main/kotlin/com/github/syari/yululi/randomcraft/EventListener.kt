@@ -20,7 +20,7 @@ object EventListener : EventRegister {
             }
         }
         event<CraftItemEvent> {
-            val randomItem = ItemStack(Material.values().random())
+            val randomItem = ItemStack(Material.values().random(), (1..64).random())
             if (it.isShiftClick) {
                 if (it.whoClicked.inventory.firstEmpty() != -1) {
                     it.currentItem = randomItem
