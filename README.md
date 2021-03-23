@@ -5,6 +5,12 @@
 
 ![](preview.png)
 
+## Architecture
+
+クラフトアイテムを変更する方法などを書いています。
+
+[ARCHITECTURE.md](ARCHITECTURE.md)
+
 ## Gradle Task
 
 ### ktlintFormat
